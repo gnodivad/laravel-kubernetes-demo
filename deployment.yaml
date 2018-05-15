@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-kubernetes-lb
+  labels:
+    app: laravel-kubernetes-lb
+spec:
+  ports:
+    - port: 80
+      targetPort: 8181
+  selector:
+    app: laravel-kubernetes
+    tier: laravel-kubernetes
+  type: LoadBalancer
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: laravel-kubernetes
+  labels:
+    app: laravel-kubernetes
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: laravel-kubernetes
+        tier: laravel-kubernetes
+    spec:
+      containers:
+      - image: davidodw/laravel-kubernetes:latest
+        name: laravel-kubernetes
+        ports:
+        - containerPort: 8181
+          name: laravel-kubernetes

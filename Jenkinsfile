@@ -6,7 +6,7 @@ node {
     
     sh "git rev-parse --short HEAD > commit-id"
 
-    tag = readFile('commit-id').replace("\n", "").replace("\r", "")
+    tag = "latest"
     appName = "laravel-kubernetes"
     registryHost = "davidodw/"
     imageName = "${registryHost}${appName}:${tag}"
@@ -25,5 +25,7 @@ node {
         
     stage "Deploy"
 
-        sh "kubectl run laravel-kubernetes-demo --image=davidodw/laravel-kubernetes --port=8181 --image-pull-policy=IfNotPresent"
+        // sh "kubectl run laravel-kubernetes-demo --image=davidodw/laravel-kubernetes --port=8181 --image-pull-policy=IfNotPresent"
+        sh "sed 's#davidodw/laravel-kubernetes:latest#'$BUILDIMG'#' deployment.yaml | kubectl apply -f -"
+        sh "kubectl rollout status deployment/laravel-kubernetes"
 }
