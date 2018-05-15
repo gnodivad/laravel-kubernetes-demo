@@ -14,11 +14,11 @@ node {
 
     stage "Build"
 
-        def customImage = docker.build("-t ${imageName} .")
+        def customImage = docker.build("${imageName}", "-f Dockerfile .")
     
     stage "Push"
 
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {`
             customImage.push()
             customImage.push('latest')
         }
