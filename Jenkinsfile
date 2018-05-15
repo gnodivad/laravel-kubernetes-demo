@@ -9,7 +9,7 @@ node {
     tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     appName = "laravel-kubernetes"
     registryHost = "davidodw/"
-    imageName = "${registryHost}${appName}:${tag}"`
+    imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
 
     stage "Build"
