@@ -6,7 +6,7 @@ node {
     
     sh "git rev-parse --short HEAD > commit-id"
 
-    tag = "latest"
+    tag = readFile('commit-id').replace("\n", "").replace("\r", "")
     appName = "laravel-kubernetes"
     registryHost = "davidodw/"
     imageName = "${registryHost}${appName}:${tag}"
