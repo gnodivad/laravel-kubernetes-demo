@@ -34,4 +34,4 @@ spec:
         name: laravel-kubernetes
         ports:
         - containerPort: 8181
-          name: laravel-kubernetes
+          name: laravel-k8
