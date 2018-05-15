@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel ({{ request()->server('SERVER_ADDR') }})
+                    Laravel Hello ({{ request()->server('SERVER_ADDR') }})
                 </div>
 
                 <div class="links">
