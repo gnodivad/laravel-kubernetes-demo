@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Hello ({{ $_SERVER[‘SERVER_ADDR’] }})
+                    Laravel Hello ({{ $_SERVER['SERVER_ADDR'] }})
                 </div>
 
                 <div class="links">
