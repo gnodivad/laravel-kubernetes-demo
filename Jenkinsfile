@@ -14,7 +14,7 @@ node {
 
     stage "Build"
 
-        def customImage = docker.build("-t", "${imageName}", ".")
+        def customImage = docker.build("-t ${imageName} .")
     
     stage "Push"
 
