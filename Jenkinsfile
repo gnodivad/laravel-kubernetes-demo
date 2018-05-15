@@ -13,6 +13,7 @@ node {
     env.BUILDIMG=imageName
 
     stage "Build"
+        sh "cat resources/views/welcome.blade.php"
         sh "mv .env.example .env"
         def customImage = docker.build("${imageName}", "-f Dockerfile .")
     
