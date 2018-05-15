@@ -21,6 +21,7 @@ metadata:
   labels:
     app: laravel-kubernetes
 spec:
+  replicas: 3
   strategy:
     type: Recreate
   template:
