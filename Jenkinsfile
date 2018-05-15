@@ -13,7 +13,7 @@ node {
     env.BUILDIMG=imageName
 
     stage "Build"
-
+        sh "mv .env.example .env"
         def customImage = docker.build("${imageName}", "-f Dockerfile .")
     
     stage "Push"
